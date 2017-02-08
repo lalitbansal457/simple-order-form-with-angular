@@ -1,0 +1,65 @@
+<html>
+<head>
+	<title>Order Form</title>
+	<script type="text/javascript" src="angular.min.js"></script>
+	<script type="text/javascript" src="controller.js"></script>
+	<style type="text/css">
+		.pull-left {
+			float: left;
+		}
+		.pull-right {
+			float: right;
+		}
+		.clearfix:before,.clearfix:after {
+			content: "";
+			display: table;
+		}
+		.clearfix:after {
+			clear: both;
+
+		}
+		ul {
+			list-style-type: none;
+			width: 100%;
+			padding: 70px;
+			background: #61A1BC
+		}
+		ul li {
+			display: block;
+			margin-bottom: 10px;
+		}
+		ul li a {
+			padding: 10px;
+			display: block;
+			background: #8EC16D;
+			color: #fff;
+			font-size: 18px;
+			font-weight: bold;
+			text-transform: capitalize;
+		}
+		ul li.active a {
+			background: #E35885;
+		}
+		.order-form {
+			max-width: 250px;
+			margin: auto;
+		}
+	</style>
+</head>
+<body>
+	<div ng-app="myApp">
+		<div ng-controller="orderController">
+			<ul class="order-form">
+				<li ng-repeat="course in courses" ng-class="{active: course.active}">
+					<a href="#" class="clearfix"  ng-click="addMe(course)">
+						<span class="pull-left">{{course.name}}</span>
+						<span class="pull-right">{{course.price | currency}}</span>
+					</a>
+				</li>
+				<li><span class="pull-left">Total :</span><span> {{addTotal()}}</span></li>
+			</ul>
+
+		</div>
+	</div>
+</body>
+</html>
